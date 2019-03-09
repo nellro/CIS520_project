@@ -2,7 +2,7 @@
 \label{sec:problem}
 
 According to the World Health Organization (WHO), heart disease is 
-the leading cause of death for both men and women around the world.
+the leading cause of death around the world.
 More than $1000$ Americans died each day in $2016$ from heart 
 attacks. 
 Although a single arrhythmia heartbeat will not have a serious impact 
@@ -24,34 +24,35 @@ PCA),
 decision tree and \knn.
 
 
-The first step of many algorithms that we will implement is feature 
-extraction. For ECG signals, those features can include, but not 
-limited to: signal amplitude, beat duration, signal segments and 
-waves durations, frequency domain features, short beats counter. 
-We plan to use cross-validation to find the optimal set of features.
+%The first step of many algorithms that we will implement is feature 
+%extraction. For ECG signals, those features can include, but not 
+%limited to: signal amplitude, beat duration, signal segments and 
+%waves durations, frequency domain features, short beats counter. 
+%We plan to use cross-validation to find the optimal set of features.
 
 We will use the following performance measures:
 \begin{itemize}
-	\item Precision, sensitivity or TPR ($\#$ correctly detected 
-	VT/$\#$ true 
-	VTs), specificity or TNT ($\#$ correctly detected SVT/$\#$ true 
-	SVTs). Those are very important performance measures in case of 
+	\item Precision, 
+	%sensitivity or 
+	TPR ($\#$ correctly detected VT/$\#$ true VTs), 
+	%specificity or 
+	TNT ($\#$ correctly detected SVT/$\#$ true SVTs). 
+	Those are very important performance measures in case of 
 	tachycardia discrimination. Though FP (misclassifying SVT as VT) 
-	might lead 
-	to a 
-	process of further examination or treatment episodes which are 
+	might lead 	to a 	process of further examination or treatment 
+	episodes which are 
 	painful for the patient, FN (misclassifying VT as SVT) might put 
 	the patient in the risk of death.  
-	Due to this reason, using cost sensitive loss is another possible 
-	approach we will use.
+%	Due to this reason, using cost sensitive loss is another possible 
+%	approach we will use.
 	\item For DNN and SVM with PCA performance we will also measure 
 	training 
 	and test time.
 	\item Since PCA is used to reduce calculation costs, we will 
 	specifically 
 	measure how much training time was reduced after using PCA while 
-	test error is still above some specified acceptable threshold. 
-	\item Since \knn is a memory-based algorithm we will report 
+	test error is still above threshold. 
+	\item Since \knn is a memory-based algorithm we will report its 
 	test times. 
 \end{itemize}
 
