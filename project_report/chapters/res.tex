@@ -1,0 +1,75 @@
+\section{Experimental results and Discussion}
+\label{sec:res}
+The performance measures for all algorithms is presented in a 
+Table~\ref{tbl:res}
+
+\begin{table}[]
+	\begin{center}
+	\begin{tabular}{|l|l|c|c|c|c|}
+		\hline
+		\multicolumn{2}{|l|}{}                                        
+		                            & 
+		\multicolumn{1}{l|}{\textbf{DNN}} & 
+		\multicolumn{1}{l|}{\textbf{Decision tree}} & 
+		\multicolumn{1}{l|}{\textbf{SVM}} & 
+		\multicolumn{1}{l|}{\textbf{k-NN}} \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Accuracy 
+		0-1}}                                               & 
+		0.9344                            &                           
+		                  &                                   
+		&                                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Sensitivity}}                    
+		                            & 
+		0.9125                            &                           
+		                  &                                   
+		&                                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Specificity}}                    
+		                            & 
+		0.9563                            &                           
+		                  &                                   
+		&                                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Precision}}                      
+		                            & 
+		0.9542                            &                           
+		                  &                                   
+		&                                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{F1}}                             
+		                            & 
+		0.933                             &                           
+		                  &                                   
+		&                                    \\ \hline
+		\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Confusion\\ 
+		matrix\end{tabular}} & \textbf{TP} 
+		&                                   &                         
+		                    &                                   
+		&                                    \\ \cline{2-6} 
+		& \textbf{TN} &                                   
+		&                                             &               
+		                    &                                    \\ 
+		\cline{2-6} 
+		& \textbf{FP} & 7/160                             
+		&                                             &               
+		                    &                                    \\ 
+		\cline{2-6} 
+		& \textbf{FN} & 14/160                            
+		&                                             &               
+		                    &                                    \\ 
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Test time (per 
+		patient)}}                                    &               
+		                    
+		&                                             &               
+		                    &                                    \\ 
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Probability 
+		estimation}}                                     & 
+		+                                 &                           
+		                  &                                   
+		&                                    \\ \hline
+	\end{tabular}
+\end{center}
+\caption{BLA}
+\label{tbl:res}
+\end{table}
+
+DISCUSSION ON THE RESULTS GOES HERE
