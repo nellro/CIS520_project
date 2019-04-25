@@ -1,2 +1,84 @@
 \subsection{Decision Tree}
 \label{sec:tree}
+
+%Decision tree algorithm has been widely used in ML problems. It has 
+%been proven to be efficient in classification. 
+As a first step, a simple classification tree was generated from the 
+training data. 
+The tree was built using CART (Classification and Regression Trees) 
+algorithm~\cite{CART}. 
+CART constructs a binary tree, where each node has two output leaf 
+nodes. 
+Gini gain selection was used for the splitting. 
+The simple classification tree shows a $94\%$ sensitivity level 
+(mean sensitivity of 20 trials), see Table~\ref{tbl:res}.
+
+As a next step, to improve performance of the model, we tried 
+Bootstrap Aggregation (Bagging) on trees~\cite{BAGGING}. 
+Bagging algorithm creates subsets of data and trains decision trees 
+on those subsets. 
+It has been shown in~\cite{BAGGING} that such methodology can 
+effectively improve the stability of the algorithm and avoid 
+overfitting.
+
+%But, how can we decide how many trees to use when implementing 
+%Bagging trees algorithm?
+%Sensitivity is a primary evaluation for this model since we need 
+%more 
+%true positive data. 
+
+To decide on the number of trees for the Bagging algorithm, three 
+performance measures were analysed: (1) sensitivity, (2) training 
+time and (3) OOB. Figure~\ref{fig:tree_graph} shows the trade-off 
+between the number of trees and three measures listed above.
+
+\begin{enumerate}
+	\item When the number of bagging trees is $3$, the sensitivity 
+	reaches $96\%$ percent; when 
+	the number of trees increases to $13$, the sensitivity reaches 
+	$98\%$ percent (both calculated by mean of 20 trials).
+	%%%%%%%%%%%%5
+	\item 
+%Training time is also necessary to evaluate when we use our model in 
+%a clinical environment. 
+	As number of trees grows, we can find a 
+	notable increment in the training time. When the number of 
+	trees is $7$, training time per patient reaches $0.01$s.
+	%%%%%%%%%%%%%%
+	\item The third evaluation method is called OOB 
+	(Out-Of-Bag)~\cite{OOB} error. 
+	After generating the classifier ($S$ trees), for each $(X_i, 
+	y_i)$ in the original splitted training set (for example, $T$-th 
+	training set), select all $T_k$ that do not include $(X_i, y_i)$. 
+	This subset is a set of boosttrap datasets that do not contain 
+	specific records from the original dataset. 
+	This set is called an Out-of-bag example. 
+	There are $n$ such subsets (one for each data record in the 
+	original data set $T$). OOB classifier is the aggregation of 
+	votes only over $T_k$, such that it does not contain $(X_i,y_i)$. 
+	Then Out-of-bag error is the prediction error rate of the 
+	out-of-bag classifier on the training 
+	set. When the number of trees increases to $10$, the OOB error 
+	reaches $0.05$.
+\end{enumerate}
+
+\paragraph{Implementation.}
+We used the MATLAB class \textit{TreeBagger}, from Statistics and 
+Machine Learning Toolbox~\cite{treebagger_matlab} to generate our 
+classifiers. The following settings were used: 
+\texttt{Method} $\to$ \texttt{classification}; To obtain the simple 
+decision tree model: \texttt{trees 
+number} $\to$ $1$; 
+To perform bagging: \texttt{trees number} $\to$ $\{1,\ldots,25\}$; 
+To get the relationship between OOB error and the number of trees:
+\texttt{OOBPredictorImportance} $\to$ \texttt{On}. 
+
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/tree_graph.png}
+	\caption{Tree Estimations: Trade-off between the number of trees 
+	and Sensitivity (left subplot), training time (middle subplot) 
+	and OOB (right subplot).}
+	\label{fig:tree_graph}
+\end{figure}
