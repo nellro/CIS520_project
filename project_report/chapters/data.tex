@@ -3,13 +3,28 @@
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[scale=0.3]{figures/atachs.pdf}
-	\caption{EGM recording during SVT. Bottom panel represents 
-	V-signal, top 
-	panel shows A-signal, middle panel presents corresponding 
-	boolean beat channels.}
-	\label{fig:egm}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.3]{figures/atachs.pdf}
+		\caption{EGM recording during SVT. Bottom panel represents 
+			V-signal, top 
+			panel shows A-signal, middle panel presents corresponding 
+			boolean beat channels.}
+		\label{fig:egm}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{figures/dnn_graph.png}
+		\caption{DNN Model Architecture}
+		\label{fig:dnn_graph}
+	\end{subfigure}
+	\caption{EGM signal example (left),	proposed DNN model (right).}
+	\label{fig:yes}
 \end{figure}
+
+
+
+
 
 For our problem we used the  
 %	\item \href{https://physionet.org/physiobank/database/mitdb/}{The 
@@ -80,6 +95,12 @@ following steps:
 	Entropy~\cite{shannon1948mathematical} (The SE value is higher 
 	for VT than for SVT).
 \end{enumerate}
+
+%The feature extraction has transformed the complex ECG 
+%signals into 12 features, which then leads to a success on forming 
+%the classification problem. 
+The final ML problem for our project is a 12-dimension-input binary 
+classification problem.
 
 %The first step of many algorithms that we will implement is feature 
 %extraction. For ECG signals, those features can include, but not 
