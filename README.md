@@ -25,8 +25,7 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
    
    Steps to run the code:
    
-   a. `make_tdata.m`
-   
+   a. `make_tdata.m`;
    b. `svm.m`
   
 2. 12 Features
