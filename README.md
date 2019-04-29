@@ -20,10 +20,9 @@ For all SVM model, default setting is use polynomial kernel with degree q in {2,
 Change variable `randomize` to 0 to turn off data set random distribution. Change fitcsvm function’s input to change kernel.
 
 1. Naïve
+ Raw data: `EGM_database.mat`
 
-Raw data: `EGM_database.mat`
-
-Steps to run the code:
+  Steps to run the code:
   a. `make_tdata.m`
   b. `svm.m`
   
