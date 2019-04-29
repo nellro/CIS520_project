@@ -21,6 +21,10 @@ analysed include Deep Neural Network (DNN), Support Vector Machine
 All the code is in the folder `code`
 
 #### Method 1: DNN 
+- Python 3 is required
+- `numpy` package is required
+- Install Tensorflow and Keras, see https://www.tensorflow.org/install/
+- Run `dnn.py`
 
 #### Method 2: Decision Tree
 
