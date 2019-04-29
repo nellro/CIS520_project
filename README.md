@@ -7,7 +7,7 @@
 
 #### 2. Instructions to run the code for each algorithm:
 
-### Method 1: DNN 
+ ### Method 1: DNN 
 
 ### Method 2: Decision Tree
 
