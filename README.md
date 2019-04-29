@@ -24,9 +24,8 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
    Raw data: `EGM_database.mat`
    
    Steps to run the code:
-   
-   a. `make_tdata.m`;
-   b. `svm.m`
+   - `make_tdata.m`;
+   - `svm.m`
   
 2. 12 Features
 
