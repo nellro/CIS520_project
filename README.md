@@ -7,7 +7,7 @@
 
 #### Instructions to run the code for each algorithm
 
-### DNN 
+### 1. DNN 
 
 ### Decision Tree
 
