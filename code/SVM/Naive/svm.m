@@ -61,12 +61,10 @@ else
 end
 
 tic;
-
 cl = fitcsvm(train_data,train_class,'KernelFunction', 'polynomial', 'Standardize', true);
 train_time = toc;
-
+tic;
 [pre_class, scores, cost] = predict(cl,test_data);
-
 test_time = toc;
 
 [pre_class_train, scores_train, cost_train] = predict(cl,train_data);

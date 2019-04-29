@@ -7,9 +7,8 @@ test_n = size(test_X, 1);
 tic;
 cl = fitcsvm(train_X, train_Y(:, 1),'KernelFunction', 'polynomial', 'Standardize', true);
 train_time = toc;
-
+tic;
 [pre_label, scores, cost] = predict(cl,test_X);
-
 test_time = toc;
 
 [pre_label_train, scores_train, cost_train] = predict(cl,train_X);
@@ -32,4 +31,4 @@ disp(['false positive = ', num2str(FP)]);
 disp(['false negative = ', num2str(FN)]);
 
 disp(['training time = ', num2str(train_time)]);
-disp(['test time = ', num2str(test_time)]);
+disp(['per parent test time = ', num2str(test_time / test_n)]);
