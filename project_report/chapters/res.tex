@@ -15,37 +15,37 @@
 		0-1}}                                               & 
 		0.9219                            &     
 		0.9313                           
-		                  &     0.934375                
+		                  &     0.9437                
 		&                    0.9437                \\ \hline
 		\multicolumn{2}{|l|}{\textbf{Sensitivity}}                    
 		                            & 
 		0.9688                            &     
 		0.9438                         
-		                  &   0.93125                 
+		                  &   0.9437                 
 		&           0.90625                         \\ \hline
 		\multicolumn{2}{|l|}{\textbf{Specificity}}                    
 		                            & 
 		0.875                            &     
 		0.9188                      
-		                  &  0.9375                    
+		                  &  0.9437                   
 		&            0.94375                        \\ \hline
 		\multicolumn{2}{|l|}{\textbf{Precision}}                      
 		                            &       
 		0.8857                            &     
 		0.9423                       
-		                  &  0.9371                 
+		                  &  0.9437                 
 		&                     0.9432               \\ \hline
 		\multicolumn{2}{|l|}{\textbf{F1}}                             
 		                            & 
 		0.9254                             &     
 		0.9430                      
-		                  &   0.9342               
+		                  &   0.9437               
 		&                0.9028                    \\ \hline
 		\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Confusion\\ 
 		matrix\end{tabular}} & \textbf{TP} 
 		&    155/160            &   151/160                      
 		                    &    
-		                    149/160                               
+		                    151/160                               
 		&                144/160                    \\ \cline{2-6} 
 		& \textbf{TN} &     140/160                        
 		&     147/160                                        
@@ -56,30 +56,30 @@
 		& \textbf{FP} & 20/160                             
 		&   13/160                                          
 		&               
-		    10/160                &          
+		    9/160                &          
 		    16/160                          \\ 
 		\cline{2-6} 
 		& \textbf{FN} & 5/160                            
 		&  9/160                                           
 		&               
-		   11/160                 &                  
+		   9/160                 &                  
 		   9/160                  \\ 
 		\hline
 		\multicolumn{2}{|l|}{\textbf{Train time (overall)}} 
-		&46.88s &&&-\\
+		&46.88s &0.2s &7.49s&-\\
 		\hline
 		\multicolumn{2}{|l|}{\textbf{Test time (per 
 		patient)}}                                    &               
 		       0.06ms             
 		&       0.21ms                                      
 		&               
-		   3.27s                 &               
-		   1.2ms                     \\ 
+		   1.58ms                 &               
+		   0.97ms                     \\ 
 		\hline
 		\multicolumn{2}{|l|}{\textbf{Probability 
 		estimation}}                                     & 
-		+                                 &                           
-		                  &                                   
+		+                                 &        -                   
+		                  &  -                                
 		&                                    \\ \hline
 	\end{tabular}
 \end{center}
@@ -89,19 +89,19 @@ algorithms}
 \end{table}
 
 
-In order to compare the algorithms, we use the same dataset with 12 
-features (see Section~\ref{sec:data}) for all algorithms: 1600 
+To compare algorithms we used the same dataset 
+(see Section~\ref{sec:data}) for all algorithms: 1600 
 training data points and 320 testing data points.
-The performance measures for all four algorithms are presented in a 
+The performance measures are presented in a 
 Table~\ref{tbl:res}.
-All algorithms show high accuracy above $93\%$ and high sensitivity 
+All algorithms show high accuracy above $92\%$ and high sensitivity 
 above $90\%$. 
 
 Among all algorithms \knn{} shows highest accuracy, but the lowest 
 sensitivity which is undesired in medical research. 
-\knn{} algorithm can respond quickly when adding new training 
-point or taking out training point in the set. However, \knn{} is 
-sensitive to outlier and does not perform well on the imbalanced 
+\knn{} algorithm can respond quickly when adding a new training 
+point or taking out a training point from the set. However, \knn{} is 
+sensitive to outliers and does not perform well on the imbalanced 
 data. 
 Moreover, \knn{} suffers from the curse of dimensionality: when the 
 data dimension increases, the computation time grows rapidly. 
@@ -117,9 +117,8 @@ classification sensitivity after DNN while keeping test time low.
 The fact that this algorithm requires relatively small computations, 
 and that it represents a set of simple classification rules, are the 
 reasons why decision tree performs well with respect to test time. 
-The disadvantage of decision tree approach is that over-fitting 
-occurs 
-pretty often. Also, when the input 
+The disadvantage of decision tree approach is overfitting which 
+occurs often. Moreover, when the input 
 data has inconsistent sample size, its information gain tends to be 
 characterized by the features which has more numerical values. 
 However, those downsides can be avoided using Bagging trees (see 
@@ -128,8 +127,8 @@ Section~\ref{sec:tree}).
 DNN achieves the best sensitivity result, which is very important in 
 medical applications, but it also has the lowest accuracy value, 
 which is also important for medical CPS.  
-One also can see that DNN approach shows very high running times in 
-comparison with all other presented algorithms. This can be the 
+One also can see that DNN model makes very fast predictions in 
+comparison with all other presented algorithms. This can be an 
 implementation artefact, since Keras was developed with a focus on 
 enabling fast experimentation and therefore, performs better in 
 comparison with MATLAB libraries. 

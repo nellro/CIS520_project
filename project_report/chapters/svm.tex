@@ -1,10 +1,39 @@
 \subsection{Support Vector Machine}
 \label{sec:svm}
 
-We believe that on EGM VT and SVT samples would have very different 
-signatures, which makes them separable with linear or other 
-relatively “simple” kernels SVM. And the SVM part majorly focus on 
-which type of selection of features would give better performance. 
+We used a polynomial kernel:
+\begin{equation*}
+G(x_{j},x_{k}) = (1+x_{j}’ x_{k})^{q}
+\end{equation*}
+Cross-validation procedure was performed to determine the best 
+parameter value $q\in\{2,3,4\}$. Cross-validation was based 
+on the accuracy measures. The performance results are presented in 
+the Table~\ref{tbl:res}. 
+
+In addition to the basis SVM model trained on the $12$-features 
+extracted using methodology from Section~\ref{sec:data}, we trained 
+three more models to analyze possible improvements. First, na\"ive 
+approach, uses a sequence of the heart-beat timings as an input to 
+the model.
+Second approach uses \textit{Fast Fourier Transform} (FFT) 
+representation of the initial EGM signal. In this case, the 
+features are the amplitudes and phases of $k=10$ frequencies with 
+highest amplitude. 
+Third approach performs \textit{Principal Component Analysis} (PCA) 
+on the FFT spectrum to do the frequency-choosing part: rather than 
+pick $k$ frequencies with 
+highest amplitude, pick the ones that are ortho-normal and maximize 
+the variance. 
+
+Our experiments showed that all three approached perform worse than 
+the basis SVM model. Further details can be found in the attached 
+MATLAB code.
+
+
+%We believe that on EGM VT and SVT samples would have very different 
+%signatures, which makes them separable with linear or other 
+%relatively “simple” kernels SVM. And the SVM part majorly focus on 
+%which type of selection of features would give better performance. 
 %The raw data is sequences of EGM signal, which are: \\
 %1.	Long and large (average about 20000 integers per instance). \\
 %2.	For real data set, instances are of different length (because 
@@ -12,97 +41,99 @@ which type of selection of features would give better performance.
 %vary from 400 to 40000 (integers) per instance. \\
 %It’s obvious that raw data’s pre-processing would be necessary. 
 
-In this section we will analyze four methods of features extraction. 
-The performance results are presented in the Table~\ref{tbl:svm}. The 
-models are all SVM with polynomial kernel, which are determined by 
-best their performance. 
+%In this section we will analyze four methods of features extraction. 
+%The 
+%models are all SVM with polynomial kernel, which are determined by 
+%best their performance. 
 
-First, a na\"ive approach is to pick the time of the heart beat in 
-EGM signal. We take first $n$ 
-heart beat moments (truncate the heart-beat moment sequence because 
-raw data’s difference in length, and in this case 76 integers per 
-instance), give extracted data to SVM model. 
+%First, a na\"ive approach is to pick the time of the heart beat in 
+%EGM signal. We take first $n$ 
+%heart beat moments (truncate the heart-beat moment sequence because 
+%raw data’s difference in length, and in this case 76 integers per 
+%instance), give extracted data to SVM model. 
 
-Yet just to ignore signal with relatively low intensity causes 
-information loss, and additional information could be the key to 
-improve model's performance. Section~\ref{sec:data} describes 12 
-features with biological meaning that could be used for 
-training/testing. Such approach gives better performance than na\"ive 
-approach.
+%Yet just to ignore signal with relatively low intensity causes 
+%information loss, and additional information could be the key to 
+%improve model's performance. Section~\ref{sec:data} describes 12 
+%features with biological meaning that could be used for 
+%training/testing. Such approach gives better performance than 
+%na\"ive 
+%approach.
 
-In addition, the feature extraction procedures are performed on the 
-whole raw data, which is the whole EGM signal within given time 
-period, which might take a long time to measure. In real time 
-life-or-death situation, even a few seconds could be the difference 
-between survival and fatality. We want to find a method which gives 
-us acceptable error while time-saving in data pre-processing. So we 
-turn to Real Time Fast Fourier Transform. FFT will transform signal 
-in time domain to frequency domain, and amplitude represents energy 
-of this frequency. A natural idea is to take information of several 
-frequencies with highest energy, so that we believe the wave they 
-reconstructed is closed enough to original one and information loss 
-becomes trivial. So this time the features are the frequency, 
-amplitude and phase of $k$ frequencies with highest amplitude (In 
-this case, 10 frequencies are chosen). 
+%In addition, the feature extraction procedures are performed on the 
+%whole raw data, which is the whole EGM signal within given time 
+%period, which might take a long time to measure. In real time 
+%life-or-death situation, even a few seconds could be the difference 
+%between survival and fatality. We want to find a method which gives 
+%us acceptable error while time-saving in data pre-processing. So we 
+%turn to Real Time Fast Fourier Transform. FFT will transform signal 
+%in time domain to frequency domain, and amplitude represents energy 
+%of this frequency. A natural idea is to take information of several 
+%frequencies with highest energy, so that we believe the wave they 
+%reconstructed is closed enough to original one and information loss 
+%becomes trivial. So this time the features are the frequency, 
+%amplitude and phase of $k$ frequencies with highest amplitude (In 
+%this case, 10 frequencies are chosen). 
 
-And the fourth approach is to use PCA over the spectrum to do the 
-frequency-choosing part, rather than pick $k$ frequencies with 
-highest amplitude, since data given to model is ``some features of 
-many features'' (pick several frequencies among spectrum), which is a 
-dimensional reduction task. 
+%And the fourth approach is to use PCA over the spectrum to do the 
+%frequency-choosing part, rather than pick $k$ frequencies with 
+%highest amplitude, since data given to model is ``some features of 
+%many features'' (pick several frequencies among spectrum), which is 
+%a 
+%dimensional reduction task. 
 
-And as shown in chart, if we do not have real-time requirement, 
-12-feature is the best; however, FFT with 10 highest frequencies have 
-acceptable error when real-time is needed. 
+%And as shown in chart, if we training time and RAM are enough, FFT 
+%with PCA would have a best performance, and also meet the real-time 
+%requirement; however, 12-features approach is also acceptable and 
+%greatly reduced calculation amount needed. 
+
 
 \paragraph{Implementation.}
-Parameters for SVM: \\
-Use polynomial kernel, pick degree q as an integer in range [2, 4]
-\begin{equation*}
-G(x_{j},x_{k}) = (1+x_{j}’ x_{k})^{q}
-\end{equation*}
+The MATLAB built-in function $\mathtt{fitcsvm}$ was used to train an 
+SVM model and do predictions. 
 
 
 
-\begin{table}[]
-	\begin{center}
-	\begin{tabular}{|l|l|c|c|c|c|}
-		\hline
-		\multicolumn{2}{|l|}{}                                        
-		                            & 
-		\multicolumn{1}{l|}{\textbf{Naive Approach }} & 
-		\multicolumn{1}{l|}{\textbf{12 Features}} & 
-		\multicolumn{1}{l|}{\textbf{FFT, 10 max freq.}} & 
-		\multicolumn{1}{l|}{\textbf{FFT, PCA}} \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Accuracy 0-1}}  & 
-		0.890625  &  0.934375  &  0.921875  &  0.8875 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Sensitivity}} &
-		 0.9  &  0.93125  & 0.925  &  0.8875          \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Specificity}} & 
-		0.88125  & 0.9375  & 0.91875 &  0.8875 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Precision}} &       
-		0.88344 &   0.93711  & 0.91925	&  0.8875 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{F1}}   & 
-		0.89164   &   0.93417    &  0.92212	&  0.8875 \\ \hline
-		\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Confusion\\ 
-		matrix\end{tabular}} & \textbf{TP} 	&  
-		144/160  &   149/160  &  148/160  &  142/160    \\ \cline{2-6} 
-		& \textbf{TN} &                                   
-		141/160  &  150/160  &  147/160  &   142/160 \\ 
-		\cline{2-6} 
-		& \textbf{FP} & 19/160	&   10/160  &  13/160  &   18/160 \\ 
-		\cline{2-6} 
-		& \textbf{FN} & 16/160  &  11/160   &   12/160   & 18/160  \\ 
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Test time / sec}}   &    
-			0.097181  &  1.0385  &  3.9953  &  7.0614    \\ 
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Training time / sec}}  & 
-		0.096374  &  1.0184  &  11.9429  &  19.3866    \\ \hline
-	\end{tabular}
-\end{center}
-\caption{SVM Performance: four different features extraction 
-approaches}
-\label{tbl:svm}
-\end{table}
+%\begin{table}[]
+%	\begin{center}
+%	\begin{tabular}{|l|l|c|c|c|c|}
+%		\hline
+%		\multicolumn{2}{|l|}{}                                        
+%		                            & 
+%		\multicolumn{1}{l|}{\textbf{Naive Approach }} & 
+%		\multicolumn{1}{l|}{\textbf{12 Features}} & 
+%		\multicolumn{1}{l|}{\textbf{FFT, 10 max freq.}} & 
+%		\multicolumn{1}{l|}{\textbf{FFT, PCA， 20 feat.}} \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Accuracy 0-1}}  & 
+%		0.890625  &  0.934375  &  0.921875  &  0.8875 \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Sensitivity}} &
+%		 0.9  &  0.93125  & 0.925  &  0.8875          \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Specificity}} & 
+%		0.88125  & 0.9375  & 0.91875 &  0.8875 \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Precision}} &       
+%		0.88344 &   0.93711  & 0.91925	&  0.8875 \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{F1}}   & 
+%		0.89164   &   0.93417    &  0.92212	&  0.8875 \\ \hline
+%		\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Confusion\\ 
+%		matrix\end{tabular}} & \textbf{TP} 	&  
+%		144/160  &   149/160  &  148/160  &  142/160    \\ 
+%\cline{2-6} 
+%		& \textbf{TN} &                                   
+%		141/160  &  150/160  &  147/160  &   142/160 \\ 
+%		\cline{2-6} 
+%		& \textbf{FP} & 19/160	&   10/160  &  13/160  &   9/160 \\ 
+%		\cline{2-6} 
+%		& \textbf{FN} & 16/160  &  11/160   &   12/160   & 9/160  \\ 
+%		\hline
+%		\multicolumn{2}{|l|}{\textbf{Test time / ms}}   &    
+%			3.8  &  0.28  &  2.21  &  1.58    \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Train time / sec}}   &    
+%			1.86  &  0.092  &  3.88  &  7.49    \\ \hline
+%	\end{tabular}
+%\end{center}
+%\caption{SVM Performance: four different features extraction 
+%approaches \\ (FFT and PCA time used are included in training/test 
+%time)}
+%\label{tbl:svm}
+%\end{table}
 

@@ -16,15 +16,15 @@ of VT label.
 At the training phase we minimize the cross-entropy loss 
 $l_{\log}:\{0,1\}\times[0,1]\rightarrow\mathbb{R}_{+}$:
 \begin{equation}
-l_{\log}(y,p)= -y\log p - (1-y)\log(1-p)
+l_{\log}(y,p)= -y\log p - (1-y)\log(1-p).
 \end{equation}
 We trained the proposed DNN model for 3000 epochs (one forward and 
 backward pass of \textit{all} the training examples) with a batch 
 size of 128 (number of training examples in one forward/backward 
 pass). 
 
-Implementation results are presented in the Table~\ref{tbl:res}.
 \paragraph{Implementation.}
-We used Keras 2.2.4, the Python Deep Learning library which runs on 
+We used Keras 2.2.4 and Python Deep Learning library which runs on 
 top of TensorFlow. The Python version is 3.6.
 We ran experiments using Ubuntu 18.04 LTS with no GPU support.
+Implementation results are presented in the Table~\ref{tbl:res}.
