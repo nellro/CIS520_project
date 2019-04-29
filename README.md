@@ -18,7 +18,7 @@ analysed include Deep Neural Network (DNN), Support Vector Machine
 - [full patient data, 1GB](https://www.dropbox.com/s/qdo3opy1tvmghpl/EGM_database.mat?dl=0 "EGM_database.mat")(optional, only for SVM code)
 
 ### 2. Instructions to run the code for each algorithm:
-all algorithms are in the folder `code`
+All the code is in the folder `code`
 
 #### Method 1: DNN 
 
