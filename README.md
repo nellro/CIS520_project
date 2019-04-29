@@ -48,5 +48,17 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
    2.	`max_k_freq.m` takes 10 frequencies with highest energy. To change this setting, you need to change variable `k` in `max_k_freq.m` and the load file name in `svm_fft.m` accordingly.
    
    
+4. FFT PCA
+   
+   Raw data: `EGM_database.mat`
+   
+   Steps to run the code:
+   
+   - `fft_data.m`
+   - `pca_fft_data.m`
+   - `svm_pca_fft.m`
+   1. FFT part’s setting is similar as in FFT k_max.
+
+   
 
  
