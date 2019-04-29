@@ -32,5 +32,21 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
    Raw data: `train_test.mat`
    
    Run:
-   a. `svm_12_features.m` (train_test.mat is calculated from EGM_database.mat by main_features.m)
+   - `svm_12_features.m` (train_test.mat is calculated from EGM_database.mat by main_features.m)
+   
+3. FFT k_max
+   
+   Raw data: `EGM_database.mat`
+   
+   Steps to run the code:
+   - `fft_data.m`
+   - `max_k_freq.m`
+   - `svm_fft.m`
+   
+   1. FFT filters all frequencies higher than 1000Hz. To change this setting you need to change variable  `max_freq` in `fft_data.m`, and it will change the name of the mat file it saves, so also change what you load at the beginning of `max_k_freq.m`
+   
+   2.	`max_k_freq.m` takes 10 frequencies with highest energy. To change this setting, you need to change variable `k` in `max_k_freq.m` and the load file name in `svm_fft.m` accordingly.
+   
+   
+
  
