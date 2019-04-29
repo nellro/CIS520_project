@@ -1,5 +1,17 @@
 # CIS520_project
  
+ ## Fatal or Non-fatal: Comparative Study of Classification Algorithms for Cardiac Arrhythmias Discrimination
+ 
+ In this project we compared classification methods for 
+electrogram (EGM) arrhythmia discrimination. We consider two 
+arrhythmia types: ventricular tachycardia (VT) and supraventricular 
+tachycardia (SVT). Therefore, we viewed this problem as a
+binary classification task to discriminate whether a patient has VT 
+(fatal tachycardia) or SVT (non-fatal tachycardia).
+
+The set of methods we considered, implemented and
+analysed include Deep Neural Network (DNN), Support Vector Machine 
+(SVM), k-Nearest Neighbours (k-nn) and Decision Tree.
 
 ### 1. Get required patients data for training/testing the models:
 - [features get here, 93KB](https://www.dropbox.com/s/kwrfj2151296q6m/train_test.mat?dl=0 "train_test.mat")
