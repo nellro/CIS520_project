@@ -29,8 +29,8 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
   
 2. 12 Features
 
-   Raw data: train_test.mat
+   Raw data: `train_test.mat`
    
    Run:
-    a. `svm_12_features.m` (train_test.mat is calculated from EGM_database.mat by main_features.m)
+   a. `svm_12_features.m` (train_test.mat is calculated from EGM_database.mat by main_features.m)
  
