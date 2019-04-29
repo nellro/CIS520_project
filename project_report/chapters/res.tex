@@ -3,89 +3,99 @@
 
 \begin{table}[]
 	\begin{center}
-	\begin{tabular}{|l|l|c|c|c|c|}
-		\hline
-		\multicolumn{2}{|l|}{}                                        
-		                            & 
-		\multicolumn{1}{l|}{\textbf{DNN}} & 
-		\multicolumn{1}{l|}{\textbf{Decision tree}} & 
-		\multicolumn{1}{l|}{\textbf{SVM}} & 
-		\multicolumn{1}{l|}{\textbf{k-NN}} \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Accuracy 
-		0-1}}                                               & 
-		0.9219                            &     
-		0.9313                           
-		                  &     0.9437                
-		&                    0.9437                \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Sensitivity}}                    
-		                            & 
-		0.9688                            &     
-		0.9438                         
-		                  &   0.9437                 
-		&           0.90625                         \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Specificity}}                    
-		                            & 
-		0.875                            &     
-		0.9188                      
-		                  &  0.9437                   
-		&            0.94375                        \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Precision}}                      
-		                            &       
-		0.8857                            &     
-		0.9423                       
-		                  &  0.9437                 
-		&                     0.9432               \\ \hline
-		\multicolumn{2}{|l|}{\textbf{F1}}                             
-		                            & 
-		0.9254                             &     
-		0.9430                      
-		                  &   0.9437               
-		&                0.9028                    \\ \hline
-		\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Confusion\\ 
-		matrix\end{tabular}} & \textbf{TP} 
-		&    155/160            &   151/160                      
-		                    &    
-		                    151/160                               
-		&                144/160                    \\ \cline{2-6} 
-		& \textbf{TN} &     140/160                        
-		&     147/160                                        
-		&               
-		      150/160              &    
-		      151/160                                \\ 
-		\cline{2-6} 
-		& \textbf{FP} & 20/160                             
-		&   13/160                                          
-		&               
-		    9/160                &          
-		    16/160                          \\ 
-		\cline{2-6} 
-		& \textbf{FN} & 5/160                            
-		&  9/160                                           
-		&               
-		   9/160                 &                  
-		   9/160                  \\ 
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Train time (overall)}} 
-		&46.88s &0.2s &7.49s&-\\
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Test time (per 
-		patient)}}                                    &               
-		       0.06ms             
-		&       0.21ms                                      
-		&               
-		   1.58ms                 &               
-		   0.97ms                     \\ 
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Probability 
-		estimation}}                                     & 
-		+                                 &        -                   
-		                  &  -                                
-		&                                    \\ \hline
-	\end{tabular}
-\end{center}
-\caption{Performance measures for all presented classification 
-algorithms}
-\label{tbl:res}
+		\begin{tabular}{|l|l|c|c|c|c|}
+			\hline
+			\multicolumn{2}{|l|}{}                                    
+			    
+			& 
+			\multicolumn{1}{l|}{\textbf{DNN}} & 
+			\multicolumn{1}{l|}{\textbf{Decision tree}} & 
+			\multicolumn{1}{l|}{\textbf{SVM}} & 
+			\multicolumn{1}{l|}{\textbf{k-NN}} \\ \hline
+			\multicolumn{2}{|l|}{\textbf{Accuracy 
+					0-1}}                                             
+					  & 
+			0.9219                            &     
+			0.9313                           
+			&     0.9344                
+			&                    0.9437                \\ \hline
+			\multicolumn{2}{|l|}{\textbf{Sensitivity}}                
+			    
+			& 
+			0.9688                            &     
+			0.9438                         
+			&   0.9313                 
+			&           0.90625                         \\ \hline
+			\multicolumn{2}{|l|}{\textbf{Specificity}}                
+			    
+			& 
+			0.875                            &     
+			0.9188                      
+			&  0.9375                   
+			&            0.94375                        \\ \hline
+			\multicolumn{2}{|l|}{\textbf{Precision}}                  
+			    
+			&       
+			0.8857                            &     
+			0.9423                       
+			&  0.9371                 
+			&                     0.9412               \\ \hline
+			\multicolumn{2}{|l|}{\textbf{F1}}                         
+			    
+			& 
+			0.9254                             &     
+			0.9430                      
+			&   0.9342               
+			&                0.9201                    \\ \hline
+			\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Confusion\\ 
+					matrix\end{tabular}} & \textbf{TP} 
+			&    155/160            &   151/160                      
+			&    
+			149/160                               
+			&                144/160                    \\ 
+			\cline{2-6} 
+			& \textbf{TN} &     140/160                        
+			&     147/160                                        
+			&               
+			150/160              &    
+			151/160                                \\ 
+			\cline{2-6} 
+			& \textbf{FP} & 20/160                             
+			&   13/160                                          
+			&               
+			10/160                &          
+			9/160                          \\ 
+			\cline{2-6} 
+			& \textbf{FN} & 5/160                            
+			&  9/160                                           
+			&               
+			11/160                 &                  
+			16/160                  \\ 
+			\hline
+			\multicolumn{2}{|l|}{\textbf{Train time (overall)}} 
+			&46.88s &0.02s &0.09s&-\\
+			\hline
+			\multicolumn{2}{|l|}{\textbf{Test time (per 
+					patient)}}                                    
+					&               
+			0.06ms             
+			&       0.21ms                                      
+			&               
+			0.06ms                 &               
+			0.97ms                     \\ 
+			\hline
+			\multicolumn{2}{|l|}{\textbf{Probability 
+					estimation}}                                     
+					& 
+			+                                 &        
+			-                   
+			&  -                                
+			&                    -                \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Performance measures for four presented classification 
+		algorithms}
+	\label{tbl:res}
 \end{table}
 
 
