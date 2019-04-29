@@ -32,7 +32,7 @@ All the code is in the folder `code`
 For all SVM model, default setting is use polynomial kernel with degree q in {2, 3, 4}, and training/test data are randomly distributed. 
 Change variable `randomize` to 0 to turn off data set random distribution. Change fitcsvm function’s input to change kernel.
 
-1. Naïve
+- Naïve
 
    Raw data: `EGM_database.mat`
    
@@ -40,14 +40,14 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
    - `make_tdata.m`;
    - `svm.m`
   
-2. 12 Features
+- 12 Features
 
    Raw data: `train_test.mat`
    
    Run:
    - `svm_12_features.m` (train_test.mat is calculated from EGM_database.mat by main_features.m)
    
-3. FFT k_max
+- FFT k_max
    
    Raw data: `EGM_database.mat`
    
@@ -61,7 +61,7 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
    2.	`max_k_freq.m` takes 10 frequencies with highest energy. To change this setting, you need to change variable `k` in `max_k_freq.m` and the load file name in `svm_fft.m` accordingly.
    
    
-4. FFT PCA
+- FFT PCA
    
    Raw data: `EGM_database.mat`
    
