@@ -15,12 +15,11 @@ predicted_labels=zeros(size(t_data,1),1);
 ed=zeros(size(t_data,1),size(data,1)); 
 ind=zeros(size(t_data,1),size(data,1)); 
 k_nn=zeros(size(t_data,1),k); 
-
 for test_point=1:size(t_data,1)
     for train_point=1:size(data,1)
        
         ed(test_point,train_point)=(...
-           sum(abs(t_data(test_point,:)-data(train_point,:)).^1));
+            sum(abs(t_data(test_point,:)-data(train_point,:)).^1));
     end
     [ed(test_point,:),ind(test_point,:)]=sort(ed(test_point,:));
 end
