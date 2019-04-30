@@ -1,15 +1,173 @@
-\documentclass[12pt]{article}
+\documentclass[twoside,11pt]{article}
+
+%================================ PREAMBLE ==================================
+
+%--------- Packages -----------
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{color}
+\usepackage{url}
+%\usepackage{algorithm,algorithmic}
 \usepackage{nn-macros}
 \usepackage{subcaption}
+%---------- Spacing ----------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
 \geometry{margin=0.7in}
-%=====================================================================
+%---------Definitions----------
+\newcommand{\half}{{\textstyle{\frac{1}{2}}}}
+\renewcommand{\>}{{\rightarrow}}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\tilde}{\widetilde}
+\newcommand{\grad}{{\nabla}}
+%
+\newcommand{\argmax}{\textup{\textrm{argmax}}}
+\newcommand{\argmin}{\textup{\textrm{argmin}}}
+\newcommand{\argsort}{\textup{\textrm{argsort}}}
+\newcommand{\sign}{\textup{\textrm{sign}}}
+\newcommand{\poly}{\textup{\textrm{poly}}}
+\newcommand{\er}{\textup{\textrm{er}}}
+\newcommand{\zo}{\textup{\textrm{0-1}}}
+\newcommand{\sq}{\textup{\textrm{sq}}}
+%
+\newcommand{\1}{{\mathbf 1}}
+\newcommand{\0}{{\mathbf 0}}
+\newcommand{\I}{{\mathbf I}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\P}{{\mathbf P}}
+\newcommand{\E}{{\mathbf E}}
+\newcommand{\Var}{{\mathbf{Var}}}
+%
+\renewcommand{\a}{{\mathbf a}}
+\renewcommand{\b}{{\mathbf b}}
+\renewcommand{\c}{{\mathbf c}}
+\renewcommand{\d}{{\mathbf d}}
+\newcommand{\f}{{\mathbf f}}
+\renewcommand{\k}{{\mathbf k}}
+\newcommand{\p}{{\mathbf p}}
+\newcommand{\q}{{\mathbf q}}
+\renewcommand{\u}{{\mathbf u}}
+\newcommand{\w}{{\mathbf w}}
+\newcommand{\x}{{\mathbf x}}
+\newcommand{\y}{{\mathbf y}}
+%
+\newcommand{\A}{{\mathbf A}}
+\newcommand{\bC}{{\mathbf C}}
+\newcommand{\C}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\F}{{\mathcal F}}
+\renewcommand{\H}{{\mathcal H}}
+\newcommand{\K}{{\mathbf K}}
+\renewcommand{\L}{{\mathcal L}}
+\newcommand{\bL}{{\mathbf L}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\W}{{\mathbf W}}
+\newcommand{\X}{{\mathcal X}}
+\newcommand{\bX}{{\mathbf X}}
+\newcommand{\Y}{{\mathcal Y}}
+%
+\newcommand{\bloss}{{\boldsymbol \ell}}
+\newcommand{\blambda}{{\boldsymbol \lambda}}
+\newcommand{\bmu}{{\boldsymbol \mu}}
+\newcommand{\bnu}{{\boldsymbol \nu}}
+\newcommand{\bSigma}{{\boldsymbol \Sigma}}
+\newcommand{\seta}{{\boldsymbol \eta}}
+\newcommand{\bpsi}{{\boldsymbol \psi}}
+\newcommand{\bphi}{{\boldsymbol \phi}}
+\newcommand{\bPhi}{{\boldsymbol \Phi}}
+\newcommand{\balpha}{{\boldsymbol \alpha}}
+\newcommand{\bxi}{{\boldsymbol \xi}}
+
+%=============================== END PREAMBLE ===============================
 
 \begin{document}
-%\HZ{Haotian, you can write your TODOs like this}
-%\PYW{Po-Yuan, you can write your TODOs like this}
-%\HH{Haochen, you can write your TODOs like this}
 
-\input{cover_page}
+%================================ COVER PAGE ================================
+
+%*********** Use this for project proposal (comment out in project report) ************
+\emph{\footnotesize{CIS 520 Spring 2019, Project Report}}
+
+%*********** Use this for project report (comment out in project proposal) ************
+%\emph{\footnotesize{CIS 520 Spring 2018, Project Report}}
+
+\vspace{12pt}
+
+%Fill in your project title
+\textbf{\Large{Fatal or Non-fatal: Comparative Study of 
+		Classification Algorithms \\for Cardiac Arrhythmias 
+		Discrimination}}
+
+\vspace{1cm}
+
+\textbf{Team Members:}
+
+\begin{tabular}{lll}%{@{}l l l}
+	Al\"{e}na Rodionova & 
+	(PennKey: nellro &
+	Email: 
+	\href{mailto:nellro@seas.upenn.edu}{nellro@seas.upenn.edu}) \\
+	%
+	Haochen Han & 
+	(PennKey: hanhc& 
+	Email: \href{mailto:hanhc@seas.upenn.edu}{hanhc@seas.upenn.edu})\\
+	%
+	Haotian Zhu &
+	(PennKey: htzhu& 
+	Email: \href{mailto:htzhu@seas.upenn.edu}{htzhu@seas.upenn.edu})\\
+	%
+	Po-Yuan Wang & 
+	(PennKey: poyuanw & 
+	Email:
+	\href{mailto:poyuanw@seas.upenn.edu}{poyuanw@seas.upenn.edu})
+\end{tabular}
+
+%---
+
+\vspace{2cm}
+
+%*********** Comment out the following for the proposal; uncomment and fill in all details for the project report ***********
+
+\textbf{Assigned Project Mentor:}
+
+%Fill in assigned TA name
+Brandon Lin
+
+\vspace{1cm}
+
+\textbf{Team Member Contributions:}
+
+%Fill in team member contributions
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Team member} & \textbf{Contributions} \\ \hline
+		Al\"{e}na Rodionova&   Problem formulation, data 
+		pre-processing (feature extraction), DNN methodology\\ 
+		\hline
+		Haochen Han&    Decision tree methodoloy, result analysis \\ 
+		\hline
+		Haotian Zhu&    SVM methodoloy, FFT feature extraction, FFT 
+		approach  \\ \hline
+		Po-Yuan Wang&  kNN methodology, modified kNN approach  \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+\vspace{12pt}
+
+\textbf{Code Submission:}
+
+\url{https://github.com/nellro/CIS520_project}
+
+
+\newpage
 %
 \input{chapters/intro}
 \input{chapters/related}
@@ -21,7 +179,10 @@
 \input{chapters/knn}
 \input{chapters/res}
 \input{chapters/ack}
+
 \newpage
-\bibliographystyle{IEEEtran}
+\bibliographystyle{plain}
 \bibliography{project_bib} 
 \end{document}
+
+
