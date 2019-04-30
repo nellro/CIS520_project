@@ -27,6 +27,10 @@ All the code is in the folder `code`
 - Run `dnn.py`
 
 #### Method 2: Decision Tree
+- To show the basic tree structure, run file `showCART.m`
+- To show the relationship between number of trees and sensitivity, run file `sensitivityPlot.m`
+- To show the relationship between number of trees and training time, run file `timePlot.m`
+- To show the relationship between number of trees and OOB error, run file `plotOOB.m`
 
 #### Method 3: k-NN
 - For the original kNN run the main file `kNNmain.m` (the function file is `KNN_.m`)
