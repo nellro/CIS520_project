@@ -76,6 +76,6 @@ Change variable `randomize` to 0 to turn off data set random distribution. Chang
    - `svm_pca_fft.m`
    1. FFT part’s setting is similar as in FFT k_max.
 
-   
+   2. `pca_fft_data.m` takes 10 PCs. To change this setting, you need to change variable `k` in `pca_fft_data.m` and the load file name in `svm_pca_fft.m` accordingly.
 
  
