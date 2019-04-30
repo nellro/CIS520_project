@@ -24,11 +24,15 @@ on the FFT spectrum to do the frequency-choosing part: rather than
 pick $k$ frequencies with 
 highest amplitude, pick the ones that are ortho-normal and maximize 
 the variance. 
-
-Our experiments showed that all three approached perform worse than 
-the basis SVM model. Further details can be found in the attached 
-MATLAB code.
-
+Our experiments showed that FFT with PCA model achieves the highest 
+accuracy of $94.3\%$, but the training time is high, $7.89$ sec. On 
+the other hand, the 
+basis SVM model showed the second best 
+accuracy of $93.4\%$, with training time being only $0.09$ sec.
+  
+\paragraph{Implementation.}
+The MATLAB built-in function $\mathtt{fitcsvm}$ was used to train an 
+SVM model and do predictions.
 
 %We believe that on EGM VT and SVT samples would have very different 
 %signatures, which makes them separable with linear or other 
@@ -86,11 +90,7 @@ MATLAB code.
 %with PCA would have a best performance, and also meet the real-time 
 %requirement; however, 12-features approach is also acceptable and 
 %greatly reduced calculation amount needed. 
-
-
-\paragraph{Implementation.}
-The MATLAB built-in function $\mathtt{fitcsvm}$ was used to train an 
-SVM model and do predictions. 
+ 
 
 
 
