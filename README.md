@@ -1,5 +1,4 @@
-# CIS520_project
- 
+
  ## Fatal or Non-fatal: Comparative Study of Classification Algorithms for Cardiac Arrhythmias Discrimination
  
  In this project we compared classification methods for 
